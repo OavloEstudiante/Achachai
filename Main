@@ -1,0 +1,84 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+
+    public static void main(String[] args) {
+        // 1. Crear instancias de Biblioteca y Bibliotecario (lista)
+        Biblioteca biblioCentral = new Biblioteca("Biblioteca FICA", "Av. Principal", "555-1234", 50);
+
+        List<Bibliotecario> listaBibliotecarios = new ArrayList<>();
+        Bibliotecario bibliotecarioA = new Bibliotecario("Ana Flores", "B001", "Maiana", 1100.00);
+        Bibliotecario bibliotecarioB = new Bibliotecario("Carlos Paz", "B002", "Tarde", 1050.00);
+        listaBibliotecarios.add(bibliotecarioA);
+        listaBibliotecarios.add(bibliotecarioB);
+        /**listaBibliotecarios.add(new Bibliotecario("Ana Flores", "B001", "Mañana", 1100.00));
+        listaBibliotecarios.add(new Bibliotecario("Carlos Paz", "B002", "Tarde", 1050.00));*/
+
+        // 2. Crear instancias de Recursos (lista)
+        List<Recurso> listaRecursos = new ArrayList<>();
+        // Libro: titulo, autor, isbn, precio, disponible, paginas, editorial
+        Libro libroA = new Libro("Fundamentos de Java", "L. Pérez", "978-12345", 55.50, true, 400, "TechPub");
+        // Revista: titulo, autor, isbn, precio, disponible, numero, periodicidad
+        Revista revistaB = new Revista("Revista de Ciencia", "Varios", "978-67890", 10.00, true, 25, "Mensual");
+        Libro libroC = new Libro("POO Práctico", "M. Solano", "978-11111", 40.00, false, 350, "GlobalEd");
+
+        listaRecursos.add(libroA);
+        listaRecursos.add(revistaB);
+        listaRecursos.add(libroC);
+
+        System.out.println("========== DEMOSTRACIÓN ==========");
+
+        // 3. Demostrar la interacción entre las clases
+
+        // Asignar biblioteca a un bibliotecario
+        listaBibliotecarios.get(0).asignarBiblioteca(biblioCentral);
+
+        // Agregar recursos a la biblioteca
+        for (int i = 0; i < listaRecursos.size(); i++) {
+            Recurso r = listaRecursos.get(i);
+            biblioCentral.agregarRecurso(r);
+        }
+
+        System.out.println("\n========== IMPRESIÓN DE DATOS ==========");
+
+        // 4. Imprimir detalles de recursos, biblioteca y bibliotecarios
+        System.out.println("--- DETALLES BIBLIOTECA ---");
+        System.out.println(biblioCentral.obtenerDetalles());
+
+        System.out.println("\n--- DETALLES BIBLIOTECARIOS ---");
+        // FOR TRADICIONAL
+        for (int i = 0; i < listaBibliotecarios.size(); i++) {
+            Bibliotecario b = listaBibliotecarios.get(i);
+            System.out.println(b.obtenerDetalles());
+        }
+
+        System.out.println("\n--- DETALLES TODOS LOS RECURSOS ---");
+        // FOR TRADICIONAL (usando la lista de recursos de la biblioteca)
+        List<Recurso> recursosDeBiblioteca = biblioCentral.getRecursos();
+        for (int i = 0; i < recursosDeBiblioteca.size(); i++) {
+            Recurso r = recursosDeBiblioteca.get(i);
+            System.out.println(r.obtenerDetalles());
+        }
+
+        // 5. Imprimir solo recursos de tipo Libro
+        System.out.println("\n--- SOLO LIBROS ---");
+        // FOR TRADICIONAL
+        for (int i = 0; i < recursosDeBiblioteca.size(); i++) {
+            Recurso r = recursosDeBiblioteca.get(i);
+            if (r instanceof Libro) {
+                System.out.println(r.obtenerDetalles());
+            }
+        }
+
+        // 6. Imprimir solo recursos de tipo Revista
+        System.out.println("\n--- SOLO REVISTAS ---");
+        // FOR TRADICIONAL
+        for (int i = 0; i < recursosDeBiblioteca.size(); i++) {
+            Recurso r = recursosDeBiblioteca.get(i);
+            if (r instanceof Revista) {
+                System.out.println(r.obtenerDetalles());
+            }
+        }
+    }
+}
