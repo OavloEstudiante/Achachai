@@ -1,0 +1,49 @@
+public class Bibliotecario {
+    private String nombre;
+    private String id;
+    private String turno;
+    private double salario;
+    private Biblioteca bibliotecaAsignada; // Relación con Biblioteca
+
+    // Constructor con parámetros
+    public Bibliotecario(String nombre, String id, String turno, double salario) {
+        this.nombre = nombre;
+        this.id = id;
+        this.turno = turno;
+        this.salario = salario;
+        this.bibliotecaAsignada = null;
+    }
+
+    // Getters
+    public String getNombre() { return nombre; }
+    public String getId() { return id; }
+    public String getTurno() { return turno; }
+    public double getSalario() { return salario; }
+    public Biblioteca getBibliotecaAsignada() { return bibliotecaAsignada; }
+
+    // Setters
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setId(String id) { this.id = id; }
+    public void setTurno(String turno) { this.turno = turno; }
+    public void setSalario(double salario) { this.salario = salario; }
+
+    // Método para asignar una biblioteca
+    public void asignarBiblioteca(Biblioteca biblioteca) {
+        this.bibliotecaAsignada = biblioteca;
+        System.out.println("-> Bibliotecario '" + this.nombre + "' asignado a '" + biblioteca.getNombre() + "'.");
+    }
+
+    // Método para obtener detalles
+    public String obtenerDetalles() {
+        String nombreBiblioteca; // Se declara la variable primero
+        if (bibliotecaAsignada != null) {
+            // Si la condición es VERDADERA
+            nombreBiblioteca = bibliotecaAsignada.getNombre();
+        } else {
+            // Si la condición es FALSA
+            nombreBiblioteca = "No Asignada";
+        }
+        return "Nombre: " + nombre + ", ID: " + id + ", Turno: " + turno +
+                ", Salario: $" + salario + ", Biblioteca: " + nombreBiblioteca;
+    }
+}
