@@ -1,0 +1,26 @@
+public class Revista extends Recurso {
+    private int numero;
+    private String periodicidad;
+
+    // Constructor por parámetros (incluye los de Recurso, como lo pide la instrucción)
+    public Revista(String titulo, String autor, String isbn, double precio, boolean disponible, int numero, String periodicidad) {
+        super(titulo, autor, isbn, precio, disponible);
+        this.numero = numero;
+        this.periodicidad = periodicidad;
+    }
+
+    // Getters
+    public int getNumero() { return numero; }
+    public String getPeriodicidad() { return periodicidad; }
+
+    // Setters
+    public void setNumero(int numero) { this.numero = numero; }
+    public void setPeriodicidad(String periodicidad) { this.periodicidad = periodicidad; }
+
+    // Método de detalles simplificado
+    public String obtenerDetalles() {
+        String detallesBase = super.obtenerDetalles();
+        return detallesBase.replace("Recurso Base", "Revista") +
+                ", Número: " + numero + ", Periodicidad: " + periodicidad;
+    }
+}
