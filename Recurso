@@ -1,0 +1,49 @@
+public class Recurso {
+    private String titulo;
+    private String autor;
+    private String isbn;
+    private double precio;
+    private boolean disponible; // true = Si, false = NO
+
+    // Constructor vacío (por defecto)
+    public Recurso() {
+    }
+
+    // Constructor con parámetros
+    public Recurso(String titulo, String autor, String isbn, double precio, boolean disponible) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.isbn = isbn;
+        this.precio = precio;
+        this.disponible = disponible;
+    }
+
+    // Getters
+    public String getTitulo() { return titulo; }
+    public String getAutor() { return autor; }
+    public String getIsbn() { return isbn; }
+    public double getPrecio() { return precio; }
+    public boolean isDisponible() { return disponible; }
+
+    // Setters
+    public void setTitulo(String titulo) { this.titulo = titulo; }
+    public void setAutor(String autor) { this.autor = autor; }
+    public void setIsbn(String isbn) { this.isbn = isbn; }
+    public void setPrecio(double precio) { this.precio = precio; }
+    public void setDisponible(boolean disponible) { this.disponible = disponible; }
+
+    // Método para obtener detalles
+    public String obtenerDetalles() {
+        String estado; // Se declara la variable primero
+
+        if (this.disponible) { // O simplemente: if (this.disponible)
+            // Si el recurso está disponible (true)
+            estado = "Sí";
+        } else {
+            // Si el recurso NO está disponible (false)
+            estado = "NO";
+        }
+        return "Tipo: Recurso Base, Título: " + titulo + ", Autor: " + autor + ", ISBN: " + isbn +
+                ", Precio: $" + precio + ", Disponible: " + estado;
+    }
+}
