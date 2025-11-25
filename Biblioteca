@@ -1,0 +1,52 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Biblioteca {
+    private String nombre;
+    private String direccion;
+    private String telefono;
+    private List<Recurso> recursos; // Lista de Recursos
+    private int capacidad;
+
+    public Biblioteca() {
+    }
+
+    // Constructor con parámetros
+    public Biblioteca(String nombre, String direccion, String telefono, int capacidad) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.capacidad = capacidad;
+        this.recursos = new ArrayList<>(); // Inicializa la lista
+    }
+
+    // Getters
+    public String getNombre() { return nombre; }
+    public String getDireccion() { return direccion; }
+    public String getTelefono() { return telefono; }
+    public List<Recurso> getRecursos() { return recursos; }
+    public int getCapacidad() { return capacidad; }
+
+    // Setters
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setDireccion(String direccion) { this.direccion = direccion; }
+    public void setTelefono(String telefono) { this.telefono = telefono; }
+    public void setCapacidad(int capacidad) { this.capacidad = capacidad; }
+
+    // Método para agregar recursos
+    public void agregarRecurso(Recurso recurso) {
+        if (recursos.size() < capacidad) {
+            this.recursos.add(recurso);
+            System.out.println("-> Recurso '" + recurso.getTitulo() + "' agregado a '" + this.nombre + "'.");
+        } else {
+            System.out.println("-> ERROR: La biblioteca está llena.");
+        }
+    }
+
+    // Método para obtener detalles
+    public String obtenerDetalles() {
+        return "Nombre: " + nombre + ", Dirección: " + direccion +
+                ", Teléfono: " + telefono + ", Capacidad: " + capacidad +
+                ", Recursos Actuales: " + recursos.size();
+    }
+}
